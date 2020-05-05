@@ -3,7 +3,6 @@
 #' @param coocepso list of drug names sorted by frequency co-occuring with EpSO
 #' @param coocesso list of drug names sorted by frequency co-occuring with ESSO
 #' @param coocepi list of drug names sorted by frequency co-occuring with EPILONT
-#' @param maxlength maximum length of the list with drug terms before aggregation
 #'
 #' @return result table containin the aggregated list of drug terms and their associations
 #'
@@ -17,10 +16,10 @@
 #' utils::data(rawDrugBankCoOcEpSO, package="epos")
 #' utils::data(rawDrugBankCoOcESSO, package="epos")
 #' utils::data(rawDrugBankCoOcEPILONT, package="epos")
-#' createNeuroTable(coocepso = rawDrugBankCoOcEpSO, 
-#'   coocesso=rawDrugBankCoOcESSO,
-#'   coocepi=rawDrugBankCoOcEPILONT, 10)
-createNeuroTable <- function (coocepso, coocesso, coocepi, maxlength) {
+#' createNeuroTable(coocepso = rawDrugBankCoOcEpSO[1:150], 
+#'   coocesso=rawDrugBankCoOcESSO[1:150],
+#'   coocepi=rawDrugBankCoOcEPILONT[1:150])
+createNeuroTable <- function (coocepso, coocesso, coocepi) {
   atchashda <-
     readAtcMapIntoHashMapDrugNamesAtcCodes(
       system.file("extdata", "db-atc.map", package = "epos"), "\t")
@@ -47,10 +46,12 @@ createNeuroTable <- function (coocepso, coocesso, coocepi, maxlength) {
   lepi <- genDictListFromRawFreq(tepi)
   neuroepi <- filterNeuroDrugs(lepi, atchashda)
   
+  ml <- min (c(length(neuroepso), length(neuroesso), length(neuroepi)))
+  
   dneuro <-
-    data.frame(EpSO = neuroepso[1:maxlength],
-               ESSO = neuroesso[1:maxlength],
-               EPILONT = neuroepi[1:maxlength])
+    data.frame(EpSO = neuroepso[1:ml],
+               ESSO = neuroesso[1:ml],
+               EPILONT = neuroepi[1:ml])
   
   dneuromaxk <- TopKLists::calculate.maxK(dneuro, 3, 5, 10)
   

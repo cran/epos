@@ -22,9 +22,9 @@
 #' atchashsec <-
 #'   readSecondLevelATC(
 #'     system.file("extdata", "drugbankatc-secondlevel.map", package = "epos"), "\t")
-#' tepso <- rawDrugBankCoOcEpSO
-#' tesso <- rawDrugBankCoOcESSO
-#' tepi <- rawDrugBankCoOcEPILONT
+#' tepso <- rawDrugBankCoOcEpSO[1:150]
+#' tesso <- rawDrugBankCoOcESSO[1:150]
+#' tepi <- rawDrugBankCoOcEPILONT[1:150]
 #' lepso <- genDictListFromRawFreq(tepso)
 #' neuroepso <- filterNeuroDrugs(lepso, atchashda)
 #' lesso <- genDictListFromRawFreq(tesso)
@@ -32,9 +32,9 @@
 #' lepi <- genDictListFromRawFreq(tepi)
 #' neuroepi <- filterNeuroDrugs(lepi, atchashda)
 #' dneuro <-
-#'   data.frame(EpSO = neuroepso[1:10],
-#'              ESSO = neuroesso[1:10],
-#'              EPILONT = neuroepi[1:10])
+#'   data.frame(EpSO = neuroepso[1:15],
+#'              ESSO = neuroesso[1:15],
+#'              EPILONT = neuroepi[1:15])
 #' dneuromaxk <- TopKLists::calculate.maxK(dneuro, 3, 5, 10)
 #' neurospace <- as.character(dneuromaxk$topkspace)
 #' neurotable <-
@@ -155,8 +155,8 @@ createBaseTable <- function (neurospace, atchashda, atchashsec, dneuromaxk) {
 #' Creates a vector with an X at each position where a drug from the druglist matches the ATC class list slatc
 #'
 #' @param druglist list of drug names
-#' @param atchashda hashmap retrieved from readAtcMapIntoHashMapDrugNamesAtcCodes
-#' @param atchashsec hashmap retrieved from readSecondLevelATC
+#' @param atchashda hash retrieved from readAtcMapIntoHashMapDrugNamesAtcCodes
+#' @param atchashsec hash retrieved from readSecondLevelATC
 #' @param slatc list of ATC classes
 #'
 #' @return list with crosses if the drug in druglist matches at the position of the ATC class in slatc
@@ -169,8 +169,8 @@ createBaseTable <- function (neurospace, atchashda, atchashsec, dneuromaxk) {
 createDashVectorForATC <- function (druglist, atchashda, atchashsec, slatc) {
   counter <- 0
   for (n in druglist) {
-    atcc <- substr(atchashda$find(n), 1, 3)
-    atcn <- atchashsec$find(substr(atchashda$find(n), 1, 3))
+    atcc <- substr(atchashda[[n]], 1, 3)
+    atcn <- atchashsec[[substr(atchashda[[n]], 1, 3)]]
     
     if (counter == 0) {
       if (atcc == slatc) {

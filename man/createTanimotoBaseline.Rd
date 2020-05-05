@@ -26,18 +26,18 @@ utils::data(rawDrugBankCoOcEpSO, package="epos")
 atchashda <-
   readAtcMapIntoHashMapDrugNamesAtcCodes(
     system.file("extdata", "db-atc.map", package = "epos"), "\\t")
-tepso <- genDictListFromRawFreq(rawDrugBankCoOcEpSO)
+tepso <- genDictListFromRawFreq(rawDrugBankCoOcEpSO[1:150])
 neuroepso <- filterNeuroDrugs(tepso, atchashda)
 utils::data(rawDrugBankCoOcESSO, package="epos")
-tesso <- genDictListFromRawFreq(rawDrugBankCoOcESSO)
+tesso <- genDictListFromRawFreq(rawDrugBankCoOcESSO[1:150])
 neuroesso <- filterNeuroDrugs(tesso, atchashda)
 utils::data(rawDrugBankCoOcEPILONT, package="epos")
-tepi <- genDictListFromRawFreq(rawDrugBankCoOcEPILONT)
+tepi <- genDictListFromRawFreq(rawDrugBankCoOcEPILONT[1:150])
 neuroepi <- filterNeuroDrugs(tepi, atchashda)
 dneuro <-
-  data.frame(EpSO = neuroepso[1:10],
-             ESSO = neuroesso[1:10],
-             EPILONT = neuroepi[1:10])
+  data.frame(EpSO = neuroepso[1:15],
+             ESSO = neuroesso[1:15],
+             EPILONT = neuroepi[1:15])
 dneuromaxk <- TopKLists::calculate.maxK(dneuro, 3, 5, 10)
 tanimotobaseline <- createTanimotoBaseline(neuroepso, neuroesso, neuroepi, dneuromaxk)
 }

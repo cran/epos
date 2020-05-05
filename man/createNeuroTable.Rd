@@ -4,7 +4,7 @@
 \alias{createNeuroTable}
 \title{Main function to call everything and produce the results}
 \usage{
-createNeuroTable(coocepso, coocesso, coocepi, maxlength)
+createNeuroTable(coocepso, coocesso, coocepi)
 }
 \arguments{
 \item{coocepso}{list of drug names sorted by frequency co-occuring with EpSO}
@@ -12,8 +12,6 @@ createNeuroTable(coocepso, coocesso, coocepi, maxlength)
 \item{coocesso}{list of drug names sorted by frequency co-occuring with ESSO}
 
 \item{coocepi}{list of drug names sorted by frequency co-occuring with EPILONT}
-
-\item{maxlength}{maximum length of the list with drug terms before aggregation}
 }
 \value{
 result table containin the aggregated list of drug terms and their associations
@@ -25,7 +23,7 @@ Main function to call everything and produce the results
 utils::data(rawDrugBankCoOcEpSO, package="epos")
 utils::data(rawDrugBankCoOcESSO, package="epos")
 utils::data(rawDrugBankCoOcEPILONT, package="epos")
-createNeuroTable(coocepso = rawDrugBankCoOcEpSO, 
-  coocesso=rawDrugBankCoOcESSO,
-  coocepi=rawDrugBankCoOcEPILONT, 10)
+createNeuroTable(coocepso = rawDrugBankCoOcEpSO[1:150], 
+  coocesso=rawDrugBankCoOcESSO[1:150],
+  coocepi=rawDrugBankCoOcEPILONT[1:150])
 }

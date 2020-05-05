@@ -12,7 +12,7 @@ readSecondLevelATC(filename, seperator)
 \item{seperator}{the csv file delimiter}
 }
 \value{
-atchashsec a hashmap with second level ATC classes as keys and their names as values
+atchashsec a hash with second level ATC classes as keys and their names as values
 }
 \description{
 Read the second level ATC classes from the file drugbankatc-secondlevel.map

@@ -3,10 +3,10 @@
 #' @param filename character vector with the file name of the file db-atc.map
 #' @param seperator character vector with the seperator used within the map-file
 #'
-#' @return atchashda hashmap with drug names as keys and atc codes as values 
+#' @return atchashda hash with drug names as keys and atc codes as values 
 #' 
 #' @importFrom utils read.csv
-#' @importFrom hashmap hashmap
+#' @importFrom hash hash
 #' 
 #' @export
 #'
@@ -19,7 +19,7 @@ readAtcMapIntoHashMapDrugNamesAtcCodes <-  function (filename, seperator) {
   atccodes <- atcmap[,2]
   catccodes <- as.character(atccodes)
   cdrugnames <- as.character(drugnames)
-  atchashda <- hashmap::hashmap(cdrugnames, catccodes)
+  atchashda <- hash::hash(keys = cdrugnames, values = catccodes)
   return (atchashda)
 }
 
@@ -27,8 +27,8 @@ readAtcMapIntoHashMapDrugNamesAtcCodes <-  function (filename, seperator) {
 #'
 #' @param filename character vector with the file name of the file db-atc.map
 #' @param seperator character vector with the seperator used within the map-file
-#' @importFrom hashmap hashmap
-#' @return atchashaa hashmap with atc codes as keys and atc names as values 
+#' @importFrom hash hash
+#' @return atchashaa hash with atc codes as keys and atc names as values 
 #' @export
 #'
 #' @examples
@@ -41,16 +41,16 @@ readAtcMapIntoHashMapAtcCodesAtcNames <-  function (filename, seperator) {
   atccodes <- atcmap[,2]
   catccodes <- as.character(atccodes)
   catcnames <- as.character(atcnames)
-  atchashaa <- hashmap::hashmap(catccodes, catcnames)
+  atchashaa <- hash::hash(keys = catccodes, values = catcnames)
   return (atchashaa)
 }
 
 #' Filter a given list of drug names for having an ATC code, if not they are dropped
 #'
 #' @param druglist a list of drug names
-#' @param atchashda a hashmap containing the drug names as keys
-#' @importFrom hashmap hashmap
-#' @return approveddrugs a hashmap filtered for having an ATC code
+#' @param atchashda a hash containing the drug names as keys
+#' @importFrom hash hash
+#' @return approveddrugs a hash filtered for having an ATC code
 #' @export
 #'
 #' @examples
@@ -63,7 +63,7 @@ readAtcMapIntoHashMapAtcCodesAtcNames <-  function (filename, seperator) {
 filterApprovedDrugs <- function (druglist, atchashda) {
   counter = 0
   for (drug in druglist) {
-    if (drug %in% atchashda$keys()) {
+    if (drug %in% names(atchashda)) {
       if (counter == 0) {
         approveddrugs <- drug
       } else {
@@ -80,9 +80,9 @@ filterApprovedDrugs <- function (druglist, atchashda) {
 #' drug for the Nervous System
 #'
 #' @param druglist a list of drug names
-#' @param atchashda a hashmap containing the drug names as keys
+#' @param atchashda a hash containing the drug names as keys
 #'
-#' @return neurodrugs a hashmap filtered for having an ATC code starting with N
+#' @return neurodrugs a hash filtered for having an ATC code starting with N
 #' @export
 #'
 #' @examples
@@ -95,8 +95,8 @@ filterApprovedDrugs <- function (druglist, atchashda) {
 filterNeuroDrugs <- function (druglist, atchashda) {
   counter = 0
   for (drug in druglist) {
-    if (drug %in% atchashda$keys()) {
-      atccode <- atchashda$find(drug)
+    if (drug %in% names(atchashda)) {
+      atccode <- atchashda[[drug]]
       if (startsWith(atccode, "N")) {
         if (counter == 0) {
           neurodrugs <- drug
@@ -117,10 +117,10 @@ filterNeuroDrugs <- function (druglist, atchashda) {
 #' @param filename the file name that is supposed to be drugbankatc-secondlevel.map
 #' @param seperator the csv file delimiter
 #'
-#' @return atchashsec a hashmap with second level ATC classes as keys and their names as values
+#' @return atchashsec a hash with second level ATC classes as keys and their names as values
 #' 
 #' @importFrom utils read.csv
-#' @importFrom hashmap hashmap
+#' @importFrom hash hash
 #' 
 #' @export
 #'
@@ -134,7 +134,7 @@ readSecondLevelATC <- function (filename, seperator) {
   atccodes <- secondatc[,1]
   catccodes <- as.character(atccodes)
   catcnames <- as.character(atcnames)
-  atchashsec <- hashmap::hashmap(catccodes, catcnames)
+  atchashsec <- hash::hash(keys = catccodes, values = catcnames)
   return (atchashsec)
 }
 

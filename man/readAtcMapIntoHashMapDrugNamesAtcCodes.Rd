@@ -12,7 +12,7 @@ readAtcMapIntoHashMapDrugNamesAtcCodes(filename, seperator)
 \item{seperator}{character vector with the seperator used within the map-file}
 }
 \value{
-atchashda hashmap with drug names as keys and atc codes as values
+atchashda hash with drug names as keys and atc codes as values
 }
 \description{
 Processes the input file db-atc.map to form a HashMap containing the drug names with ATC codes

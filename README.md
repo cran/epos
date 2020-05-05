@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/ZBMEDLABS/epilepsyontologysimilarities.svg?branch=master)](https://travis-ci.org/ZBMEDLABS/epilepsyontologysimilarities)
 
+[![](https://cranlogs.r-pkg.org/badges/epos)](https://cran.r-project.org/package=epos)
+
 # epos
 This is an R package that is developed for analyzing and visualizing statistical information of biomedical named entities that were automatically identified with a UIMA-based text mining workflow on the corpus of LIVIVO. The major scope of this R package is the comparison of drug names that co-occur with entities of epilepsy ontologies in documents of the LIVIVO corpus.
 

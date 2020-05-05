@@ -34,9 +34,9 @@ atchashaa <-
 atchashsec <-
   readSecondLevelATC(
     system.file("extdata", "drugbankatc-secondlevel.map", package = "epos"), "\\t")
-tepso <- rawDrugBankCoOcEpSO
-tesso <- rawDrugBankCoOcESSO
-tepi <- rawDrugBankCoOcEPILONT
+tepso <- rawDrugBankCoOcEpSO[1:150]
+tesso <- rawDrugBankCoOcESSO[1:150]
+tepi <- rawDrugBankCoOcEPILONT[1:150]
 lepso <- genDictListFromRawFreq(tepso)
 neuroepso <- filterNeuroDrugs(lepso, atchashda)
 lesso <- genDictListFromRawFreq(tesso)
@@ -44,9 +44,9 @@ neuroesso <- filterNeuroDrugs(lesso, atchashda)
 lepi <- genDictListFromRawFreq(tepi)
 neuroepi <- filterNeuroDrugs(lepi, atchashda)
 dneuro <-
-  data.frame(EpSO = neuroepso[1:10],
-             ESSO = neuroesso[1:10],
-             EPILONT = neuroepi[1:10])
+  data.frame(EpSO = neuroepso[1:15],
+             ESSO = neuroesso[1:15],
+             EPILONT = neuroepi[1:15])
 dneuromaxk <- TopKLists::calculate.maxK(dneuro, 3, 5, 10)
 neurospace <- as.character(dneuromaxk$topkspace)
 neurotable <-

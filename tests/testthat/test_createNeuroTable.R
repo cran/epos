@@ -7,6 +7,6 @@ test_that("Test function createNeuroTable()", {
   utils::data(rawDrugBankCoOcEPILONT, package="epos")
   nt <- createNeuroTable(coocepso = rawDrugBankCoOcEpSO,
     coocesso=rawDrugBankCoOcESSO,
-    coocepi=rawDrugBankCoOcEPILONT, 10)
+    coocepi=rawDrugBankCoOcEPILONT)
   expect_that(length(nt), equals(12))
 })

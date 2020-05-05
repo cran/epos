@@ -9,9 +9,9 @@ createDashVectorForATC(druglist, atchashda, atchashsec, slatc)
 \arguments{
 \item{druglist}{list of drug names}
 
-\item{atchashda}{hashmap retrieved from readAtcMapIntoHashMapDrugNamesAtcCodes}
+\item{atchashda}{hash retrieved from readAtcMapIntoHashMapDrugNamesAtcCodes}
 
-\item{atchashsec}{hashmap retrieved from readSecondLevelATC}
+\item{atchashsec}{hash retrieved from readSecondLevelATC}
 
 \item{slatc}{list of ATC classes}
 }

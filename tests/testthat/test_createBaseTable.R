@@ -14,9 +14,9 @@ test_that("Test function createBaseTable()", {
   atchashsec <-
     readSecondLevelATC(
       system.file("extdata", "drugbankatc-secondlevel.map", package = "epos"), "\t")
-  tepso <- rawDrugBankCoOcEpSO[1:500]
-  tesso <- rawDrugBankCoOcESSO[1:500]
-  tepi <- rawDrugBankCoOcEPILONT[1:500]
+  tepso <- rawDrugBankCoOcEpSO
+  tesso <- rawDrugBankCoOcESSO
+  tepi <- rawDrugBankCoOcEPILONT
   lepso <- genDictListFromRawFreq(tepso)
   neuroepso <- filterNeuroDrugs(lepso, atchashda)
   lesso <- genDictListFromRawFreq(tesso)
@@ -24,9 +24,9 @@ test_that("Test function createBaseTable()", {
   lepi <- genDictListFromRawFreq(tepi)
   neuroepi <- filterNeuroDrugs(lepi, atchashda)
   dneuro <-
-    data.frame(EpSO = neuroepso[1:10],
-               ESSO = neuroesso[1:10],
-               EPILONT = neuroepi[1:10])
+    data.frame(EpSO = neuroepso[1:210],
+               ESSO = neuroesso[1:210],
+               EPILONT = neuroepi[1:210])
   dneuromaxk <- TopKLists::calculate.maxK(dneuro, 3, 5, 10)
   neurospace <- as.character(dneuromaxk$topkspace)
   neurotable <-
