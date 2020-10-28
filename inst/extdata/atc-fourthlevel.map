@@ -1,10 +1,10 @@
 A09AA	Enzyme preparations
-C07FB	Beta blocking agents, selective, and other antihypertensives
+C07FB	Beta blocking agents and calcium channel blockers
 A09AB	Acid preparations
 L01AX	Other alkylating agents
 C05BA	Heparins or heparinoids for topical use
-C07FA	Beta blocking agents, non-selective, and other antihypertensives
 A09AC	Enzyme and acid preparations, combinations
+J05AA	Thiosemicarbazones
 L01BB	Purine analogues
 L01BA	Folic acid analogues
 L01BC	Pyrimidine analogues
@@ -13,9 +13,12 @@ C05BB	Sclerosing agents for local injection
 R05DB	Other cough suppressants
 S01AE	Fluoroquinolones
 D03BA	Proteolytic enzymes
+J05AP	Antivirals for treatment of HCV infections
 J05AC	Cyclic amines
+C05BX	Other sclerosing agents
 J05AB	Nucleosides and nucleotides excl. reverse transcriptase inhibitors
 J05AE	Protease inhibitors
+C07FX	Beta blocking agents, other combinations
 J05AD	Phosphonic acid derivatives
 S02CA	Corticosteroids and antiinfectives in combination
 S01AA	Antibiotics
@@ -28,20 +31,24 @@ C05CA	Bioflavonoids
 C04AA	2-amino-1-phenylethanol derivatives
 J01XX	Other antibacterials
 R03AK	Adrenergics in combination with corticosteroids or other drugs, excl. anticholinergics
+L01CC	Colchicine derivatives
 L01CB	Podophyllotoxin derivatives
+C04AF	Enzymes
 L01CD	Taxanes
 C04AD	Purine derivatives
 R03AB	Non-selective beta-adrenoreceptor agonists
-R03AC	Selective beta-2-adrenoreceptor agonists
 C04AE	Ergot alkaloids
+R03AC	Selective beta-2-adrenoreceptor agonists
 L01CA	Vinca alkaloids and analogues
 C04AB	Imidazoline derivatives
 C04AC	Nicotinic acid and derivatives
 R03AA	Alpha- and beta-adrenoreceptor agonists
 C04AX	Other peripheral vasodilators
+J06BC	Other immunoglobulins
 J06BB	Specific immunoglobulins
 C05CX	Other capillary stabilizing agents
 S02BA	Corticosteroids
+D02AE	Carbamide products
 A08AB	Peripherally acting antiobesity products
 C07DA	Beta blocking agents, non-selective, thiazides and other diuretics
 A08AA	Centrally acting antiobesity products
@@ -55,13 +62,14 @@ C07DB	Beta blocking agents, selective, thiazides and other diuretics
 R03BB	Anticholinergics
 B06AA	Enzymes
 J04AK	Other drugs for treatment of tuberculosis
+B06AB	Other hem products
 B06AC	Drugs used in hereditary angioedema
 J04AM	Combinations of drugs for treatment of tuberculosis
 L02BG	Aromatase inhibitors
 J04AD	Thiocarbamide derivatives
 J04AC	Hydrazides
 S01CA	Corticosteroids and antiinfectives in combination
-R03AL	Adrenergics in combination with anticholinergics
+R03AL	Adrenergics in combination with anticholinergics incl. triple combinations with corticosteroids
 S01CB	Corticosteroids/antiinfectives/mydriatics in combination
 S01CC	Antiinflammatory agents, non-steroids and antiinfectives in combination
 L02BX	Other hormone antagonists and related agents
@@ -84,6 +92,7 @@ J05AX	Other antivirals
 R03CC	Selective beta-2-adrenoreceptor agonists
 R03BX	Other drugs for obstructive airway diseases, inhalants
 L01AD	Nitrosoureas
+L01AG	Epoxides
 C05AX	Other agents for treatment of hemorrhoids and anal fissures for topical use
 S02DA	Analgesics and anesthetics
 S01BA	Corticosteroids, plain
@@ -103,6 +112,7 @@ S03AA	Antiinfectives
 C08EA	Phenylalkylamine derivatives
 J04BA	Drugs for treatment of lepra
 C07CG	Alpha and beta blocking agents and other diuretics
+D04AX	Other antipruritics
 C07CA	Beta blocking agents, non-selective, and other diuretics
 C07CB	Beta blocking agents, selective, and other diuretics
 C08EX	Other non-selective calcium channel blockers
@@ -114,18 +124,20 @@ J02AA	Antibiotics
 J02AC	Triazole derivatives
 L01CX	Other plant alkaloids and natural products
 L01DC	Other cytotoxic antibiotics
-C09DB	Angiotensin II antagonists and calcium channel blockers
+C09DB	Angiotensin II receptor blockers (ARBs) and calcium channel blockers
+V09XX	Various diagnostic radiopharmaceuticals
 L01DB	Anthracyclines and related substances
-C09DA	Angiotensin II antagonists and diuretics
+C09DA	Angiotensin II receptor blockers (ARBs) and diuretics
 L01DA	Actinomycines
 D06AX	Other antibiotics for topical use
 B03XA	Other antianemic preparations
 V10BX	Various pain palliation radiopharmaceuticals
+V09XA	Iodine (131I) compounds
 S03CA	Corticosteroids and antiinfectives in combination
 D06BA	Sulfonamides
 S02AA	Antiinfectives
 D06BB	Antivirals
-C09DX	Angiotensin II antagonists, other combinations
+C09DX	Angiotensin II receptor blockers (ARBs), other combinations
 R05CB	Mucolytics
 C07AA	Beta blocking agents, non-selective
 C07AB	Beta blocking agents, selective
@@ -159,7 +171,7 @@ S01HA	Local anesthetics
 C03XA	Vasopressin antagonists
 J02AX	Other antimycotics for systemic use
 V09GA	Technetium (99mTc) compounds
-C09CA	Angiotensin II antagonists, plain
+C09CA	Angiotensin II receptor blockers (ARBs), plain
 S01GX	Other antiallergics
 D07CD	Corticosteroids, very potent, combinations with antibiotics
 G03FB	Progestogens and estrogens, sequential preparations
@@ -175,6 +187,7 @@ G02CX	Other gynecologicals
 S01KA	Viscoelastic substances
 J01CE	Beta-lactamase sensitive penicillins
 J01CG	Beta-lactamase inhibitors
+V09CX	Other renal system diagnostic radiopharmaceuticals
 J01CF	Beta-lactamase resistant penicillins
 B05XA	Electrolyte solutions
 B05XB	Amino acids
@@ -191,6 +204,7 @@ V08AD	Non-watersoluble X-ray contrast media
 G01AD	Organic acids
 G01AC	Quinoline derivatives
 G02CC	Antiinflammatory products for vaginal administration
+G01AB	Arsenic compounds
 G02CB	Prolactine inhibitors
 G01AA	Antibiotics
 D08AX	Other antiseptics and disinfectants
@@ -203,6 +217,7 @@ S01JA	Colouring agents
 C09AA	ACE inhibitors, plain
 V08CA	Paramagnetic contrast media
 H05BX	Other anti-parathyroid agents
+V08CB	Superparamagnetic contrast media
 A11HA	Other plain vitamin preparations
 G03DC	Estren derivatives
 G02BB	Intravaginal contraceptives
@@ -229,6 +244,7 @@ V09AB	Iodine (123I) compounds
 G02AD	Prostaglandins
 G02AC	Ergot alkaloids and oxytocin incl. analogues, in combination
 N06AB	Selective serotonin reuptake inhibitors
+P03BX	Other insecticides and repellents
 A11CA	Vitamin A, plain
 G03CC	Estrogens, combinations with other drugs
 N06AA	Non-selective monoamine reuptake inhibitors
@@ -270,6 +286,7 @@ V08AB	Watersoluble, nephrotropic, low osmolar X-ray contrast media
 R01AB	Sympathomimetics, combinations excl. corticosteroids
 R01AC	Antiallergic agents, excl. corticosteroids
 A12CE	Selenium
+P03BA	Pyrethrines
 R03DX	Other systemic drugs for obstructive airway diseases
 N07BB	Drugs used in alcohol dependence
 N07BA	Drugs used in nicotine dependence
@@ -280,7 +297,10 @@ P03AX	Other ectoparasiticides, incl. scabicides
 D08AA	Acridine derivatives
 J01DI	Other cephalosporins and penems
 D08AC	Biguanides and amidines
+G04CX	Other drugs used in benign prostatic hypertrophy
 H03BC	Perchlorates
+A10BJ	Glucagon-like peptide-1 (GLP-1) analogues
+A10BK	Sodium-glucose co-transporter 2 (SGLT2) inhibitors
 S01GA	Sympathomimetics used as decongestants
 H03BB	Sulfur-containing imidazole derivatives
 H03BA	Thiouracils
@@ -310,6 +330,7 @@ G04BX	Other urologicals
 J01FF	Lincosamides
 M09AB	Enzymes
 M09AA	Quinine and derivatives
+J01FG	Streptogramins
 H02AB	Glucocorticoids
 S01FA	Anticholinergics
 H02AA	Mineralocorticoids
@@ -343,15 +364,15 @@ P01CB	Antimony compounds
 A01AC	Corticosteroids for local oral treatment
 A01AD	Other agents for local oral treatment
 P01CD	Arsenic compounds
-V04CK	Tests for pancreatic function
 N05CA	Barbiturates, plain
+V04CK	Tests for pancreatic function
 V03AH	Drugs for treatment of hypoglycemia
 N04AB	Ethers chemically close to antihistamines
 N05CC	Aldehydes and derivatives
 P01CA	Nitroimidazole derivatives
-V04CJ	Tests for thyreoidea function
 N05CB	Barbiturates, combinations
 N04AA	Tertiary amines
+V04CJ	Tests for thyreoidea function
 N05CE	Piperidinedione derivatives
 V03AN	Medical gases
 N05CD	Benzodiazepine derivatives
@@ -359,10 +380,11 @@ N04AC	Ethers of tropine or tropine derivatives
 A03FA	Propulsives
 V04CM	Tests for fertility disturbances
 N05CF	Benzodiazepine related drugs
+C02LX	Other antihypertensives and diuretics
 N05CH	Melatonin receptor agonists
 P01BX	Other antimalarials
+P02DX	Other anticestodals
 N05CM	Other hypnotics and sedatives
-N05AN	Lithium
 H01AA	ACTH
 H02CA	Anticorticosteroids
 H01AC	Somatropin and somatropin agonists
@@ -436,8 +458,10 @@ V03AF	Detoxifying agents for antineoplastic treatment
 V04CG	Tests for gastric secretion
 P02BA	Quinoline derivatives and related substances
 V04CH	Tests for renal function and ureteral injuries
+V03AG	Drugs for treatment of hypercalcemia
 V04CE	Tests for liver functional capacity
 V03AE	Drugs for treatment of hyperkalemia and hyperphosphatemia
+P02BB	Organophosphorous compounds
 N06BA	Centrally acting sympathomimetics
 N06BC	Xanthine derivatives
 C02KX	Antihypertensives for pulmonary arterial hypertension
@@ -445,11 +469,12 @@ C02LE	Alpha-adrenoreceptor antagonists and diuretics
 C02LF	Guanidine derivatives and diuretics
 C02LC	Imidazoline receptor agonists in combination with diuretics
 C02LA	Rauwolfia alkaloids and diuretics in combination
+M05BC	Bone morphogenetic proteins
 M05BB	Bisphosphonates, combinations
 M05BA	Bisphosphonates
+B01AX	Other antithrombotic agents
 C10AD	Nicotinic acid and derivatives
 A03AE	Serotonin receptor antagonists
-B01AX	Other antithrombotic agents
 C10AC	Bile acid sequestrants
 C10AB	Fibrates
 C10AA	HMG CoA reductase inhibitors
@@ -468,6 +493,7 @@ N02AC	Diphenylpropylamine derivatives
 N02AF	Morphinan derivatives
 N02AE	Oripavine derivatives
 N02AG	Opioids in combination with antispasmodics
+N02AJ	Opioids in combination with non-opioid analgesics
 B01AA	Vitamin K antagonists
 B01AB	Heparin group
 V09IX	Other diagnostic radiopharmaceuticals for tumour detection
@@ -501,11 +527,13 @@ B02BD	Blood coagulation factors
 C10BX	HMG CoA reductase inhibitors, other combinations
 L01XE	Protein kinase inhibitors
 A02AF	Antacids with antiflatulents
+C01DB	Quinolone vasodilators
 C01DA	Organic nitrates
 A03CA	Synthetic anticholinergic agents in combination with psycholeptics
 N04BX	Other dopaminergic agents
 A03CB	Belladonna and derivatives in combination with psycholeptics
 A02AA	Magnesium compounds
+V09HA	Technetium (99mTc) compounds
 A02AD	Combinations and complexes of aluminium, calcium and magnesium compounds
 A02AB	Aluminium compounds
 A02AC	Calcium compounds
@@ -530,6 +558,7 @@ N04BA	Dopa and dopa derivatives
 N04BC	Dopamine agonists
 N04BB	Adamantane derivatives
 N04BD	Monoamine oxidase B inhibitors
+G03XX	Other sex hormones and modulators of the genital system
 P01CX	Other agents against leishmaniasis and trypanosomiasis
 C01BD	Antiarrhythmics, class III
 C01BB	Antiarrhythmics, class Ib
@@ -547,8 +576,10 @@ G03XC	Selective estrogen receptor modulators
 G03XB	Progesterone receptor modulators
 A07EC	Aminosalicylic acid and similar agents
 G03XA	Antigonadotropins and similar agents
-A05AA	Bile acid preparations
+A05AA	Bile acids and derivatives
+A05AB	Preparations for biliary tract therapy
 A07EA	Corticosteroids acting locally
+C02DG	Guanidine derivatives
 D10AX	Other anti-acne preparations for topical use
 C01BG	Other antiarrhythmics, class I and III
 A07EB	Antiallergic agents, excl. corticosteroids
@@ -584,6 +615,7 @@ L04AC	Interleukin inhibitors
 D10BA	Retinoids for treatment of acne
 M02AA	Antiinflammatory preparations, non-steroids for topical use
 M03CA	Dantrolene and derivatives
+V10AX	Other antiinflammatory therapeutic radiopharmaceuticals
 C01CX	Other cardiac stimulants
 C03DB	Other potassium-sparing agents
 A04AD	Other antiemetics
@@ -592,17 +624,22 @@ C02BB	Secondary and tertiary amines
 C03DA	Aldosterone antagonists
 L01XX	Other antineoplastic agents
 R07AX	Other respiratory system products
+L01XY	Combinations of antineoplastic agents
 D11AX	Other dermatologicals
+N01AA	Ethers
+N02CB	Corticosteroid derivatives
 N02CA	Ergot alkaloids
 A04AA	Serotonin (5HT3) antagonists
 N02CC	Selective serotonin (5HT1) agonists
 N01AB	Halogenated hydrocarbons
 D11AC	Medicated shampoos
+N01AG	Barbiturates in combination with other drugs
 N01AF	Barbiturates, plain
 N01AH	Opioid anesthetics
 M04AX	Other antigout preparations
 B02AA	Amino acids
 B02AB	Proteinase inhibitors
+D11AE	Androgens for topical use
 D11AH	Agents for dermatitis, excluding corticosteroids
 R06AC	Substituted ethylene diamines
 C01AC	Strophanthus glycosides
@@ -623,27 +660,33 @@ R06AE	Piperazine derivatives
 A16AB	Enzymes
 A16AA	Amino acids and derivatives
 N02BA	Salicylic acid and derivatives
+A05BA	Liver therapy
 N02BB	Pyrazolones
 N02BE	Anilides
 N02BG	Other analgesics and antipyretics
 A16AX	Various alimentary tract and metabolism products
 B03BA	Vitamin B12 (cyanocobalamin and analogues)
 B03BB	Folic acid and derivatives
+C01AX	Other cardiac glycosides
 C03BB	Sulfonamides and potassium in combination
 A07AC	Imidazole derivatives
 C03BC	Mercurial diuretics
 A07AA	Antibiotics
-C03BA	Sulfonamides, plain
 L03AX	Other immunostimulants
+C03BA	Sulfonamides, plain
+A07AB	Sulfonamides
 C03BD	Xanthine derivatives
 D01BA	Antifungals for systemic use
 J07AM	Tetanus vaccines
+A07AX	Other intestinal antiinfectives
 M01AX	Other antiinflammatory and antirheumatic agents, non-steroids
 C03BX	Other low-ceiling diuretics
 M01BA	Antiinflammatory/antirheumatic agents in combination with corticosteroids
 B05AA	Blood substitutes and plasma protein fractions
+J07AF	Diphtheria vaccines
 C03CC	Aryloxyacetic acid derivatives
 C02AC	Imidazoline receptor agonists
+C03CD	Pyrazolone derivatives
 C03CA	Sulfonamides, plain
 C02AA	Rauwolfia alkaloids
 C03CB	Sulfonamides and potassium in combination
@@ -653,6 +696,7 @@ L02AA	Estrogens
 L02AE	Gonadotropin releasing hormone analogues
 M01CC	Penicillamine and similar agents
 M01CB	Gold preparations
+M01CA	Quinolines
 A06AD	Osmotically acting laxatives
 L04AX	Other immunosuppressants
 A06AB	Contact laxatives
@@ -696,5 +740,6 @@ C03AX	Thiazides, combinations with other drugs
 M01AB	Acetic acid derivatives and related substances
 D01AE	Other antifungals for topical use
 M01AA	Butylpyrazolidines
+B05BA	Solutions for parenteral nutrition
 J07BH	Rota virus diarrhea vaccines
 B05BB	Solutions affecting the electrolyte balance

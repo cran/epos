@@ -4,8 +4,13 @@
 \alias{createJaccardPlotMeSHFive}
 \title{Creates the plot for all jaccard coefficients amongst the three epilepsy ontologies}
 \usage{
-createJaccardPlotMeSHFive(jmeshepso, jmeshesso, jmeshepi, jmeshepilepsyand,
-  jmeshepilepsyor)
+createJaccardPlotMeSHFive(
+  jmeshepso,
+  jmeshesso,
+  jmeshepi,
+  jmeshepilepsyand,
+  jmeshepilepsyor
+)
 }
 \arguments{
 \item{jmeshepso}{list of jaccard coefficients between mesh and epso for increasing k}

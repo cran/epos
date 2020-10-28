@@ -3,7 +3,7 @@
 #' @param neuroepso list of neuro drug names co-occurring with epso
 #' @param neuroesso list of neuro drug names co-occurring with esso
 #' @param neuroepi list of neuro drug names co-occurring with epi
-#' @param dneuromaxk object returned from TopKLists::calculate.maxkS
+#' @param dneuromaxk object returned from TopKLists::calculate.maxk
 #'
 #' @return jaccardepilepsyplot the ggplot object
 #'
@@ -23,22 +23,24 @@
 #' @importFrom ggplot2 element_text
 #' @export
 #' @examples
-#' utils::data(rawDrugBankCoOcEpSO, package="epos")
+#' utils::data(rawDrugNamesCoOcEpSO, package="epos")
+#' utils::data(rawDrugNamesCoOcESSO, package="epos")
+#' utils::data(rawDrugNamesCoOcEPILONT, package="epos")
 #' atchashda <-
 #'   readAtcMapIntoHashMapDrugNamesAtcCodes(
 #'     system.file("extdata", "db-atc.map", package = "epos"), "\t")
-#' tepso <- genDictListFromRawFreq(rawDrugBankCoOcEpSO[1:150])
+#' tepso <- genDictListFromRawFreq(rawDrugNamesCoOcEpSO[1:150])
 #' neuroepso <- filterNeuroDrugs(tepso, atchashda)
-#' utils::data(rawDrugBankCoOcESSO, package="epos")
-#' tesso <- genDictListFromRawFreq(rawDrugBankCoOcESSO[1:150])
+#' utils::data(rawDrugNamesCoOcESSO, package="epos")
+#' tesso <- genDictListFromRawFreq(rawDrugNamesCoOcESSO[1:150])
 #' neuroesso <- filterNeuroDrugs(tesso, atchashda)
-#' utils::data(rawDrugBankCoOcEPILONT, package="epos")
-#' tepi <- genDictListFromRawFreq(rawDrugBankCoOcEPILONT[1:150])
+#' utils::data(rawDrugNamesCoOcEPILONT, package="epos")
+#' tepi <- genDictListFromRawFreq(rawDrugNamesCoOcEPILONT[1:150])
 #' neuroepi <- filterNeuroDrugs(tepi, atchashda)
 #' dneuro <-
-#'   data.frame(EpSO = neuroepso[1:15],
-#'              ESSO = neuroesso[1:15],
-#'              EPILONT = neuroepi[1:15])
+#'   data.frame(EpSO = neuroepso[1:9],
+#'              ESSO = neuroesso[1:9],
+#'              EPILONT = neuroepi[1:9])
 #' dneuromaxk <- TopKLists::calculate.maxK(dneuro, 3, 5, 10)
 #' tanimotobaseline <- createTanimotoBaseline(neuroepso, neuroesso, neuroepi, dneuromaxk)
 createTanimotoBaseline <-

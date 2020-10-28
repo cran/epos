@@ -18,10 +18,10 @@ approveddrugs a hash filtered for having an ATC code
 Filter a given list of drug names for having an ATC code, if not they are dropped
 }
 \examples{
-utils::data(rawDrugBankCoOcEpSO, package="epos")
+utils::data(rawDrugNamesCoOcEpSO, package="epos")
 atchashda <-
   readAtcMapIntoHashMapDrugNamesAtcCodes(
-  system.file("extdata", "db-atc.map", package = "epos"), "\\t")
-tepso <- genDictListFromRawFreq(rawDrugBankCoOcEpSO)
+  system.file("extdata", "db-atc.map", package = "epos"), "\t")
+tepso <- genDictListFromRawFreq(rawDrugNamesCoOcEpSO)
 filterApprovedDrugs(tepso, atchashda)
 }

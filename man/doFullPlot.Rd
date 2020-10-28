@@ -4,9 +4,17 @@
 \alias{doFullPlot}
 \title{Does the full plot on one page}
 \usage{
-doFullPlot(cosinemeshplot, cosinedrugbankplot, cosineepilepsyplot,
-  dicemeshplot, dicedrugbankplot, diceepilepsyplot, jaccardmeshplot,
-  jaccarddrugbankplot, jaccardepilepsyplot)
+doFullPlot(
+  cosinemeshplot,
+  cosinedrugbankplot,
+  cosineepilepsyplot,
+  dicemeshplot,
+  dicedrugbankplot,
+  diceepilepsyplot,
+  jaccardmeshplot,
+  jaccarddrugbankplot,
+  jaccardepilepsyplot
+)
 }
 \arguments{
 \item{cosinemeshplot}{plot with cosine coefficients against MeSH}

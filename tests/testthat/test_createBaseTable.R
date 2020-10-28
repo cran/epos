@@ -2,9 +2,9 @@ library(epos)
 context("test_createBaseTable")
 
 test_that("Test function createBaseTable()", {
-  utils::data(rawDrugBankCoOcEpSO, package="epos")
-  utils::data(rawDrugBankCoOcESSO, package="epos")
-  utils::data(rawDrugBankCoOcEPILONT, package="epos")
+  utils::data(rawDrugNamesCoOcEpSO, package="epos")
+  utils::data(rawDrugNamesCoOcESSO, package="epos")
+  utils::data(rawDrugNamesCoOcEPILONT, package="epos")
   atchashda <-
   readAtcMapIntoHashMapDrugNamesAtcCodes(
     system.file("extdata", "db-atc.map", package = "epos"), "\t")
@@ -13,10 +13,10 @@ test_that("Test function createBaseTable()", {
       system.file("extdata", "db-atc.map", package = "epos"), "\t")
   atchashsec <-
     readSecondLevelATC(
-      system.file("extdata", "drugbankatc-secondlevel.map", package = "epos"), "\t")
-  tepso <- rawDrugBankCoOcEpSO
-  tesso <- rawDrugBankCoOcESSO
-  tepi <- rawDrugBankCoOcEPILONT
+      system.file("extdata", "atc-secondlevel.map", package = "epos"), "\t")
+  tepso <- rawDrugNamesCoOcEpSO
+  tesso <- rawDrugNamesCoOcESSO
+  tepi <- rawDrugNamesCoOcEPILONT
   lepso <- genDictListFromRawFreq(tepso)
   neuroepso <- filterNeuroDrugs(lepso, atchashda)
   lesso <- genDictListFromRawFreq(tesso)

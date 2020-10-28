@@ -13,12 +13,12 @@
 #' @export
 #'
 #' @examples
-#' utils::data(rawDrugBankCoOcEpSO, package="epos")
-#' utils::data(rawDrugBankCoOcESSO, package="epos")
-#' utils::data(rawDrugBankCoOcEPILONT, package="epos")
-#' createNeuroTable(coocepso = rawDrugBankCoOcEpSO[1:150], 
-#'   coocesso=rawDrugBankCoOcESSO[1:150],
-#'   coocepi=rawDrugBankCoOcEPILONT[1:150])
+#' utils::data(rawDrugNamesCoOcEpSO, package="epos")
+#' utils::data(rawDrugNamesCoOcESSO, package="epos")
+#' utils::data(rawDrugNamesCoOcEPILONT, package="epos")
+#' createNeuroTable(coocepso = rawDrugNamesCoOcEpSO[1:150],
+#'   coocesso=rawDrugNamesCoOcESSO[1:150],
+#'   coocepi=rawDrugNamesCoOcEPILONT[1:150])
 createNeuroTable <- function (coocepso, coocesso, coocepi) {
   atchashda <-
     readAtcMapIntoHashMapDrugNamesAtcCodes(
@@ -30,7 +30,7 @@ createNeuroTable <- function (coocepso, coocesso, coocepi) {
   
   atchashsec <-
     readSecondLevelATC(
-      system.file("extdata", "drugbankatc-secondlevel.map", package = "epos"), "\t")
+      system.file("extdata", "atc-secondlevel.map", package = "epos"), "\t")
   
 
   tepso <- coocepso

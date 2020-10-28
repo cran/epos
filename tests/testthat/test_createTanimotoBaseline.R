@@ -2,17 +2,19 @@ library(epos)
 context("test_createTanimotoBaseline")
 
 test_that("Test function createTanimotoBaseline()", {
-  utils::data(rawDrugBankCoOcEpSO, package="epos")
+  utils::data(rawDrugNamesCoOcEpSO, package="epos")
+  utils::data(rawDrugNamesCoOcESSO, package="epos")
+  utils::data(rawDrugNamesCoOcEPILONT, package="epos")
   atchashda <-
     readAtcMapIntoHashMapDrugNamesAtcCodes(
       system.file("extdata", "db-atc.map", package = "epos"), "\t")
-  tepso <- genDictListFromRawFreq(rawDrugBankCoOcEpSO)
+  tepso <- genDictListFromRawFreq(rawDrugNamesCoOcEpSO)
   neuroepso <- filterNeuroDrugs(tepso, atchashda)
   utils::data(rawDrugBankCoOcESSO, package="epos")
-  tesso <- genDictListFromRawFreq(rawDrugBankCoOcESSO)
+  tesso <- genDictListFromRawFreq(rawDrugNamesCoOcESSO)
   neuroesso <- filterNeuroDrugs(tesso, atchashda)
   utils::data(rawDrugBankCoOcEPILONT, package="epos")
-  tepi <- genDictListFromRawFreq(rawDrugBankCoOcEPILONT)
+  tepi <- genDictListFromRawFreq(rawDrugNamesCoOcEPILONT)
   neuroepi <- filterNeuroDrugs(tepi, atchashda)
   dneuro <-
     data.frame(EpSO = neuroepso[1:210],

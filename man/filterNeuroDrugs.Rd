@@ -20,10 +20,10 @@ Filter a given list of drug names for having an ATC code starting with N indicat
 drug for the Nervous System
 }
 \examples{
-utils::data(rawDrugBankCoOcEpSO, package="epos")
+utils::data(rawDrugNamesCoOcEpSO, package="epos")
 atchashda <-
   readAtcMapIntoHashMapDrugNamesAtcCodes(
-  system.file("extdata", "db-atc.map", package = "epos"), "\\t")
-tepso <- genDictListFromRawFreq(rawDrugBankCoOcEpSO)
+  system.file("extdata", "db-atc.map", package = "epos"), "\t")
+tepso <- genDictListFromRawFreq(rawDrugNamesCoOcEpSO)
 nepso <- filterNeuroDrugs(tepso, atchashda)
 }

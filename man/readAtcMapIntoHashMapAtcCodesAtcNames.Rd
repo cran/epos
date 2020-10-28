@@ -20,5 +20,5 @@ Processes the input file db-atc.map to form a HashMap containing the drug names 
 \examples{
 atchashaa <-
   readAtcMapIntoHashMapAtcCodesAtcNames(
-    system.file("extdata", "db-atc.map", package = "epos"), "\\t")
+    system.file("extdata", "db-atc.map", package = "epos"), "\t")
 }

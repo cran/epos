@@ -2,12 +2,12 @@
 % Please edit documentation in R/processATC.R
 \name{readSecondLevelATC}
 \alias{readSecondLevelATC}
-\title{Read the second level ATC classes from the file drugbankatc-secondlevel.map}
+\title{Read the second level ATC classes from the file atc-secondlevel.map}
 \usage{
 readSecondLevelATC(filename, seperator)
 }
 \arguments{
-\item{filename}{the file name that is supposed to be drugbankatc-secondlevel.map}
+\item{filename}{the file name that is supposed to be atc-secondlevel.map}
 
 \item{seperator}{the csv file delimiter}
 }
@@ -15,10 +15,10 @@ readSecondLevelATC(filename, seperator)
 atchashsec a hash with second level ATC classes as keys and their names as values
 }
 \description{
-Read the second level ATC classes from the file drugbankatc-secondlevel.map
+Read the second level ATC classes from the file atc-secondlevel.map
 }
 \examples{
 atchashsec <-
   readSecondLevelATC(
-  system.file("extdata", "drugbankatc-secondlevel.map", package = "epos"), "\\t")
+  system.file("extdata", "atc-secondlevel.map", package = "epos"), "\t")
 }
