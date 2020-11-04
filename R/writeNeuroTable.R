@@ -1,6 +1,5 @@
 #' Create the final resulting data frame
 #'
-#' @param neurospace list of drug names that were aggregated using TopKLists::calculate.max topkspace
 #' @param atchashda hashmap retrieved from readAtcMapIntoHashMapDrugNamesAtcCodes
 #' @param atchashsec hashmap retrieved from readSecondLevelATC
 #' @param dneuromaxk data frame containing columns for each intersection, ATC class, and reference list
@@ -38,43 +37,26 @@
 #'     c(length(neuroepso), length(neuroesso), length(neuroepi),
 #'       length(neuroepisem), length(neurofenics)))
 #' dneuro <-
-#'   data.frame(EpSO = c(neuroepso, rep(0, (mx-length(neuroepso)))),
-#'              ESSO = c(neuroesso, rep(0, (mx-length(neuroesso)))),
-#'              EPILONT = c(neuroepi, rep(0, (mx-length(neuroepi)))),
-#'              EPISEM = c(neuroepisem, rep(0, (mx-length(neuroepisem)))),
-#'              FENICS = c(neurofenics, rep(0, (mx-length(neurofenics)))))
-#' dneuromaxk <- TopKLists::calculate.maxK(dneuro, 5, 5, 10)
-#' neurospace <- as.character(dneuromaxk$topkspace)
-#' neurotable <-
-#'   createBaseTable(neurospace, atchashda, atchashsec, dneuromaxk)
-createBaseTable <- function (neurospace, atchashda, atchashsec, dneuromaxk) {
-  i_EPILONT_EPISEM_EpSO_ESSO <- unlist(strsplit(stringr::str_replace_all((dneuromaxk$venntable$objects$EPILONT_EPISEM_EpSO_ESSO), "\\*", ""), ", "))
-  i_EPILONT_EPISEM_ESSO <- unlist(strsplit(stringr::str_replace_all((dneuromaxk$venntable$objects$EPILONT_EPISEM_ESSO), "\\*", ""), ", "))
-  i_EPILONT_EpSO_ESSO <- unlist(strsplit(stringr::str_replace_all((dneuromaxk$venntable$objects$EPILONT_EpSO_ESSO), "\\*", ""), ", "))
-  i_EPISEM_EpSO_ESSO <- unlist(strsplit(stringr::str_replace_all((dneuromaxk$venntable$objects$EPISEM_EpSO_ESSO), "\\*", ""), ", "))
-  i_EPILONT_EPISEM <- unlist(strsplit(stringr::str_replace_all((dneuromaxk$venntable$objects$EPILONT_EPISEM), "\\*", ""), ", "))
-  i_EPILONT_EpSO <- unlist(strsplit(stringr::str_replace_all((dneuromaxk$venntable$objects$EPILONT_EpSO), "\\*", ""), ", "))
-  i_EPILONT_ESSO <- unlist(strsplit(stringr::str_replace_all((dneuromaxk$venntable$objects$EPILONT_ESSO), "\\*", ""), ", "))
-  i_EpSO_ESSO <- unlist(strsplit(stringr::str_replace_all((dneuromaxk$venntable$objects$EpSO_ESSO), "\\*", ""), ", "))
-  i_EPILONT <- unlist(strsplit(stringr::str_replace_all((dneuromaxk$venntable$objects$EPILONT), "\\*", ""), ", "))
-  i_EPISEM <- unlist(strsplit(stringr::str_replace_all((dneuromaxk$venntable$objects$EPISEM), "\\*", ""), ", "))
-  i_EpSO <- unlist(strsplit(stringr::str_replace_all((dneuromaxk$venntable$objects$EpSO), "\\*", ""), ", "))
-  i_ESSO <- unlist(strsplit(stringr::str_replace_all((dneuromaxk$venntable$objects$ESSO), "\\*", ""), ", "))
-  
-  
-  neurotopk <- c(intersect(neurospace, i_EPILONT_EPISEM_EpSO_ESSO), setdiff(i_EPILONT_EPISEM_EpSO_ESSO, neurospace), # 29
-                 intersect(neurospace, i_EPILONT_EPISEM_ESSO), setdiff(i_EPILONT_EPISEM_ESSO, neurospace),
-                 intersect(neurospace, i_EPILONT_EpSO_ESSO), setdiff(i_EPILONT_EpSO_ESSO, neurospace),
-                 intersect(neurospace, i_EPISEM_EpSO_ESSO), setdiff(i_EPISEM_EpSO_ESSO, neurospace),
-                 intersect(neurospace, i_EPILONT_EPISEM), setdiff(i_EPILONT_EPISEM, neurospace),
-                 intersect(neurospace, i_EPILONT_EpSO), setdiff(i_EPILONT_EpSO, neurospace),
-                 intersect(neurospace, i_EPILONT_ESSO), setdiff(i_EPILONT_ESSO, neurospace),
-                 intersect(neurospace, i_EpSO_ESSO), setdiff(i_EpSO_ESSO, neurospace),
-                 intersect(neurospace, i_EPILONT), setdiff(i_EPILONT, neurospace),
-                 intersect(neurospace, i_EPISEM), setdiff(i_EPISEM, neurospace),
-                 intersect(neurospace, i_EpSO), setdiff(i_EpSO, neurospace),
-                 intersect(neurospace, i_ESSO), setdiff(i_ESSO, neurospace))
-     
+#'   data.frame(EpSO = c(neuroepso, rep("", (mx-length(neuroepso)))),
+#'              ESSO = c(neuroesso, rep("", (mx-length(neuroesso)))),
+#'              EPILONT = c(neuroepi, rep("", (mx-length(neuroepi)))),
+#'              EPISEM = c(neuroepisem, rep("", (mx-length(neuroepisem)))),
+#'              FENICS = c(neurofenics, rep("", (mx-length(neurofenics)))))
+#' dneuromaxk <- TopKLists::calculate.maxK(dneuro, L=5, d=5, v=10)
+#' neurotable <- createNeuroTable(atchashda, atchashsec, dneuromaxk)
+createNeuroTable <- function (atchashda, atchashsec, dneuromaxk) {
+  neurospace <- dneuromaxk$topkspace
+  neurotopk <- c()
+  counter <- 0
+  for (o in dneuromaxk$venntable$objects) {
+    counter <- counter + 1
+      d <- unlist(strsplit(stringr::str_replace_all((o), "\\*", ""), ", "))
+      d <- d[nchar(d) > 0]
+      i <- intersect(neurospace, d)
+      s <-  setdiff(d, neurospace)
+      neurotopk <- c(neurotopk, i, s)
+  }
+
   broadspectrum <- c(             
     "Brivaracetam",
     "Clobazam",
@@ -104,6 +86,8 @@ createBaseTable <- function (neurospace, atchashda, atchashsec, dneuromaxk) {
     "Vigabatrin"
   )  
   abscence <- "Ethosuximide"
+  
+  up2date <- union (abscence, union (broadspectrum, focal))
 
   lancet <- c(
     "Carbamazepine",
@@ -118,64 +102,76 @@ createBaseTable <- function (neurospace, atchashda, atchashsec, dneuromaxk) {
   )
   
   drugse <- c(
-    "Lorazepam",
-    "Diazepam",
     "Clonazepam",
-    "Midazolam",
-    "Phenytoin",
-    "Valproic Acid",
+    "Diazepam",
+    "Etomidate",
+    "Isoflurane",
     "Levetiracetam",
+    "Lorazepam",
+    "Midazolam",
+    "Pentobarbital",
     "Phenobarbital",
+    "Phenytoin",
     "Propofol",
     "Thiopental",
-    "Pentobarbital",
-    "Isoflurane",
-    "Etomidate"
+    "Valproic Acid"
+  )
+  
+  seizuremed <- c(
+    "Brivaracetam",
+    "Cannabidiol",
+    "Carbamazepine",
+    "Cenobamate",
+    "Clobazam",
+    "Clonazepam",
+    "Diazepam",
+    "Eslicarbazepine acetate",
+    "Ethosuximide",
+    "Ezogabine",
+    "Felbamate",
+    "Fenfluramine",
+    "Gabapentin",
+    "Lacosamide",
+    "Lamotrigine",
+    "Levetiracetam",
+    "Lorazepam",
+    "Midazolam",
+    "Oxcarbazepine",
+    "Perampanel",
+    "Phenobarbital",
+    "Phenytoin",
+    "Pregabalin",
+    "Primidone",
+    "Rufinamide",
+    "Stiripentol",
+    "Tiagabine",
+    "Topiramate",
+    "Valproic acid",
+    "Vigabatrin",
+    "Zonisamide"
   )
   # neurotopk <- neurospace[1:39]
   rnames <- ""
   for (drug in neurotopk) {
-    if (drug %in% i_EPILONT_EPISEM_EpSO_ESSO) {
-      rnames <- c(rnames, "$EPILONT_EPISEM_EpSO_ESSO$")
-    } else if (drug %in% i_EPILONT_EPISEM_ESSO) {
-      rnames <- c(rnames, "EPILONT_EPISEM_ESSO")
-    } else if (drug %in% i_EPILONT_EpSO_ESSO) {
-      rnames <- c(rnames, "EPILONT_EpSO_ESSO")
-    } else if (drug %in% i_EPISEM_EpSO_ESSO) {
-      rnames <- c(rnames, "EPISEM_EpSO_ESSO")
-    } else if (drug %in% i_EPILONT_EPISEM) {
-      rnames <- c(rnames, "EPILONT_EPISEM")
-    } else if (drug %in% i_EPILONT_EpSO) {
-      rnames <- c(rnames, "EPILONT_EpSO")
-    } else if (drug %in% i_EPILONT_ESSO) {
-      rnames <- c(rnames, "EPILONT_ESSO")
-    } else if (drug %in% i_EpSO_ESSO) {
-      rnames <- c(rnames, "EpSO_ESSO")
-    } else if (drug %in% i_EPILONT) {
-      rnames <- c(rnames, "EPILONT")
-    } else if (drug %in% i_EPISEM) {
-      rnames <- c(rnames, "EPISEM")
-    } else if (drug %in% i_EpSO) {
-      rnames <- c(rnames, "EpSO")
-    } else if (drug %in% i_ESSO) {
-      rnames <- c(rnames, "ESSO")
+    counter <- 0
+    for (n in dneuromaxk$venntable$objects) {
+      counter <- counter + 1
+      curn <- unlist(strsplit(stringr::str_replace_all((n), "\\*", ""), ", "))
+      cur <- names(dneuromaxk$venntable$objects)[[counter]]
+      #print(c(counter, cur, curn))
+      if (drug %in% curn) {
+        rnames <- c(rnames, cur)
+      }
     }
   }
   rnames <- rnames [2:length(rnames)]
   
-  #rnames <- c(
-   # rep("EpSO_ESSO_EPILONT", length(i_epso_esso_epi)),
-  #  rep("EpSO_ESSO", length(i_epso_esso)),
-  #  rep("EpSO", length(i_epso)),
-  #  rep("EpSO_EPILONT", length(i_epso_epi)),
-  #  rep("EPILONT", length(i_epi)),
-  #  rep("ESSO_EPILONT", length(i_esso_epi)),
-  #  rep("ESSO", length(i_esso))
-  #)
   ranking <- rep("", length(neurotopk))
   lanc <- rep ("", length(neurotopk))
   dse <- rep ("", length(neurotopk))
-  counter <- 1
+  u2d <- rep ("", length(neurotopk))
+  efo <- rep ("", length(neurotopk))
+  
   counter <- 1
   for (d in neurotopk) {
     # ranking position
@@ -187,6 +183,12 @@ createBaseTable <- function (neurospace, atchashda, atchashsec, dneuromaxk) {
     }
     if (length(which(drugse == d)) > 0) {
       dse[counter] <- "X"
+    }
+    if (length(which(up2date == d)) > 0) {
+      u2d[counter] <- "X"
+    }
+    if (length(which(seizuremed == d)) > 0) {
+      efo[counter] <- "X"
     }
     counter <- counter + 1
   }
@@ -205,7 +207,9 @@ createBaseTable <- function (neurospace, atchashda, atchashsec, dneuromaxk) {
     N04=createDashVectorForATC(neurotopk, atchashda, atchashsec, "N04"),
     N07=createDashVectorForATC(neurotopk, atchashda, atchashsec, "N07"),
     Lancet=lanc,
-    DSE=dse
+    DSE=dse,
+    U2D=u2d,
+    EFO=efo
   )
   return (dntk)
 }
@@ -227,24 +231,26 @@ createBaseTable <- function (neurospace, atchashda, atchashsec, dneuromaxk) {
 createDashVectorForATC <- function (druglist, atchashda, atchashsec, slatc) {
   counter <- 0
   for (n in druglist) {
-    atcc <- substr(atchashda[[n]], 1, 3)
-    atcn <- atchashsec[[substr(atchashda[[n]], 1, 3)]]
-    
-    if (counter == 0) {
-      if (atcc == slatc) {
-        al <- "X"
-      } else {
-        al <- ""
+      if (atchashda[[n]] != "") {
+        atcc <- substr(atchashda[[n]], 1, 3)
+        atcn <- atchashsec[[substr(atchashda[[n]], 1, 3)]]
+        
+        if (counter == 0) {
+          if (atcc == slatc) {
+            al <- "X"
+          } else {
+            al <- ""
+          }
+          counter <- counter + 1
+        } else {
+          if (atcc == slatc) {
+            al <- c(al, "X")
+          } else {
+            al <- c(al, "")
+          }
+        }
+       
       }
-      counter <- counter + 1
-    } else {
-      if (atcc == slatc) {
-        al <- c(al, "X")
-      } else {
-        al <- c(al, "")
-      }
-    }
-   
   }
   return (al)
 }

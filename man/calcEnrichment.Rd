@@ -4,12 +4,10 @@
 \alias{calcEnrichment}
 \title{Calculate enrichment of one list in comparison to reference list}
 \usage{
-calcEnrichment(alist, reflist)
+calcEnrichment(alist)
 }
 \arguments{
 \item{alist}{the list to compare}
-
-\item{reflist}{the reference list}
 }
 \value{
 list with calculated enrichment used for plotting
@@ -18,5 +16,5 @@ list with calculated enrichment used for plotting
 Calculate enrichment of one list in comparison to reference list
 }
 \examples{
-a <- calcEnrichment(c("a","b","c", "d", "e"), c("b", "d"))
+a <- calcEnrichment(c("Clobazam","Oxcarbazepine"))
 }

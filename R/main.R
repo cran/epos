@@ -16,10 +16,10 @@
 #' utils::data(rawDrugNamesCoOcEpSO, package="epos")
 #' utils::data(rawDrugNamesCoOcESSO, package="epos")
 #' utils::data(rawDrugNamesCoOcEPILONT, package="epos")
-#' createNeuroTable(coocepso = rawDrugNamesCoOcEpSO[1:150],
+#' createBaseTable(coocepso = rawDrugNamesCoOcEpSO[1:150],
 #'   coocesso=rawDrugNamesCoOcESSO[1:150],
 #'   coocepi=rawDrugNamesCoOcEPILONT[1:150])
-createNeuroTable <- function (coocepso, coocesso, coocepi) {
+createBaseTable <- function (coocepso, coocesso, coocepi) {
   atchashda <-
     readAtcMapIntoHashMapDrugNamesAtcCodes(
       system.file("extdata", "db-atc.map", package = "epos"), "\t")
@@ -58,7 +58,7 @@ createNeuroTable <- function (coocepso, coocesso, coocepi) {
   neurospace <- as.character(dneuromaxk$topkspace)
   
   neurotable <-
-    createBaseTable(neurospace, atchashda, atchashsec, dneuromaxk)
+    createNeuroTable(atchashda, atchashsec, dneuromaxk)
   
   return (neurotable)
 }
