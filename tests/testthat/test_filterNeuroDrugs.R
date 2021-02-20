@@ -6,7 +6,7 @@ test_that("Test function filterNeuroDrugs()", {
   atchashda <-
     readAtcMapIntoHashMapDrugNamesAtcCodes(
     system.file("extdata", "db-atc.map", package = "epos"), "\t")
-  tepso <- genDictListFromRawFreq(rawDrugNamesCoOcEpSO)
+  tepso <- rawDrugNamesCoOcEpSO
   nepso <- filterNeuroDrugs(tepso, atchashda)
-  expect_that(length(nepso), equals(360))
+  expect_that(length(nepso), equals(465))
 })

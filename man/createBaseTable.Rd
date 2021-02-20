@@ -4,7 +4,7 @@
 \alias{createBaseTable}
 \title{Main function to call everything and produce the results}
 \usage{
-createBaseTable(coocepso, coocesso, coocepi)
+createBaseTable(coocepso, coocesso, coocepi, coocepisem, coocfenics)
 }
 \arguments{
 \item{coocepso}{list of drug names sorted by frequency co-occuring with EpSO}
@@ -12,6 +12,10 @@ createBaseTable(coocepso, coocesso, coocepi)
 \item{coocesso}{list of drug names sorted by frequency co-occuring with ESSO}
 
 \item{coocepi}{list of drug names sorted by frequency co-occuring with EPILONT}
+
+\item{coocepisem}{list of drug names sorted by frequency co-occuring with EPISEM}
+
+\item{coocfenics}{list of drug names sorted by frequency co-occuring with FENICS}
 }
 \value{
 result table containin the aggregated list of drug terms and their associations
@@ -23,7 +27,11 @@ Main function to call everything and produce the results
 utils::data(rawDrugNamesCoOcEpSO, package="epos")
 utils::data(rawDrugNamesCoOcESSO, package="epos")
 utils::data(rawDrugNamesCoOcEPILONT, package="epos")
+utils::data(rawDrugNamesCoOcEPISEM, package="epos")
+utils::data(rawDrugNamesCoOcFENICS, package="epos")
 createBaseTable(coocepso = rawDrugNamesCoOcEpSO[1:150],
   coocesso=rawDrugNamesCoOcESSO[1:150],
-  coocepi=rawDrugNamesCoOcEPILONT[1:150])
+  coocepi=rawDrugNamesCoOcEPILONT[1:150],
+  coocepisem=rawDrugNamesCoOcEPISEM[1:150],
+  coocfenics=rawDrugNamesCoOcFENICS[1:150])
 }

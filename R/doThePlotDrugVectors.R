@@ -26,22 +26,36 @@
 #' utils::data(rawDrugNamesCoOcEpSO, package="epos")
 #' utils::data(rawDrugNamesCoOcESSO, package="epos")
 #' utils::data(rawDrugNamesCoOcEPILONT, package="epos")
+#' utils::data(rawDrugNamesCoOcEPISEM, package="epos")
+## utils::data(rawDrugNamesCoOcFENICS, package="epos")
 #' atchashda <-
 #'   readAtcMapIntoHashMapDrugNamesAtcCodes(
 #'     system.file("extdata", "db-atc.map", package = "epos"), "\t")
-#' tepso <- genDictListFromRawFreq(rawDrugNamesCoOcEpSO[1:150])
+#' atchashaa <-
+#'   readAtcMapIntoHashMapAtcCodesAtcNames(
+#'     system.file("extdata", "db-atc.map", package = "epos"), "\t")
+#' atchashsec <-
+#'   readSecondLevelATC(
+#'     system.file("extdata", "atc-secondlevel.map", package = "epos"), "\t")
+#' tepso <- rawDrugNamesCoOcEpSO
+#' tesso <- rawDrugNamesCoOcESSO
+#' tepi <- rawDrugNamesCoOcEPILONT
+#' tepisem <- rawDrugNamesCoOcEPISEM
+#' tfenics <- rawDrugNamesCoOcFENICS
+#' 
 #' neuroepso <- filterNeuroDrugs(tepso, atchashda)
-#' utils::data(rawDrugNamesCoOcESSO, package="epos")
-#' tesso <- genDictListFromRawFreq(rawDrugNamesCoOcESSO[1:150])
 #' neuroesso <- filterNeuroDrugs(tesso, atchashda)
-#' utils::data(rawDrugNamesCoOcEPILONT, package="epos")
-#' tepi <- genDictListFromRawFreq(rawDrugNamesCoOcEPILONT[1:150])
 #' neuroepi <- filterNeuroDrugs(tepi, atchashda)
+#' neuroepisem <- filterNeuroDrugs(tepisem, atchashda)
+#' neurofenics <- filterNeuroDrugs(tfenics, atchashda)
+#' 
 #' dneuro <-
-#'   data.frame(EpSO = neuroepso[1:9],
-#'              ESSO = neuroesso[1:9],
-#'              EPILONT = neuroepi[1:9])
-#' dneuromaxk <- TopKLists::calculate.maxK(dneuro, 3, 5, 10)
+#'   data.frame(EpSO = neuroepso[1:210],
+#'              ESSO = neuroesso[1:210],
+#'              EPILONT = neuroepi[1:210],
+#'              EPISEM = neuroepisem[1:210],
+#'              FENICS = neurofenics[1:210])
+#' dneuromaxk <- TopKLists::calculate.maxK(dneuro, 5, 5, 5)
 #' tanimotobaseline <- createTanimotoBaseline(neuroepso, neuroesso, neuroepi, dneuromaxk)
 createTanimotoBaseline <-
   function (neuroepso, neuroesso, neuroepi, dneuromaxk) {
@@ -112,7 +126,7 @@ createTanimotoBaseline <-
         ),
         size = 1
       ) +
-      ggplot2::coord_trans(limx = c(0, topk), limy = c(0, 1)) +
+      ggplot2::coord_trans(xlim = c(0, topk), ylim = c(0, 1)) +
       ggplot2::scale_x_continuous(breaks = c(0, 5, 10, 15, 20, 25, topk)) +
       ggplot2::scale_y_continuous(breaks = c(0.25, 0.5, 0.75, 1)) +
       ggplot2::scale_colour_manual(name = "Dictionary", values = cols) +
@@ -206,7 +220,7 @@ createJaccardPlotDBMeSH <-
         ),
         size = 1
       ) +
-      ggplot2::coord_trans(limx = c(0, 250), limy = c(0, 1)) +
+      ggplot2::coord_trans(xlim = c(0, 250), ylim = c(0, 1)) +
       ggplot2::scale_x_continuous(breaks = c(0, 25, 50, 75, 100, 125, 150, 175, 200, 225, 250)) +
       ggplot2::scale_y_continuous(breaks = c(0.25, 0.5, 0.75, 1)) +
       ggplot2::scale_colour_manual(name = "Dictionary", values = cols) +
@@ -325,7 +339,7 @@ createJaccardPlotMeSHFive <-
         ),
         size = 1
       ) +
-      ggplot2::coord_trans(limx = c(0, 100), limy = c(0, 1)) +
+      ggplot2::coord_trans(xlim = c(0, 100), ylim = c(0, 1)) +
       ggplot2::scale_x_continuous(breaks = c(0, 25, 50, 75, 100)) +
       ggplot2::scale_y_continuous(breaks = c(0.25, 0.5, 0.75, 1)) +
       ggplot2::scale_colour_manual(name = "Dictionary", values = cols) +
@@ -372,7 +386,7 @@ tanimotoPlot <- function(neurospace, neuromesh, k) {
       subtitle = ""
     ) +
     ggplot2::geom_step(size = 2) +
-    ggplot2::coord_trans(limx = c(1, k), limy = c(0, 0.5)) +
+    ggplot2::coord_trans(xlim = c(1, k), ylim = c(0, 0.5)) +
     ggplot2::scale_x_continuous(breaks = c(1, 5, 10, 15, 20, 25, 30, 35, k)) +
     ggplot2::scale_y_continuous(breaks = c(0.1, 0.2, 0.3, 0.4, 0.5)) +
     ggplot2::scale_colour_manual(name = "Dictionary", values = cols) +

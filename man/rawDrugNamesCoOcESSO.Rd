@@ -6,7 +6,7 @@
 \title{List drug terms with their frequency co-occurring with terms from the ESSO 
 ontology in publications since 2015 from the BioASQ 2020 corpus.}
 \format{
-An object of class \code{numeric} of length 4991.
+An object of class \code{character} of length 8620.
 }
 \source{
 The text mining workflows for data generation are described in 

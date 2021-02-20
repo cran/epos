@@ -25,21 +25,34 @@ Creates the plot for all jaccard coefficients amongst the three epilepsy ontolog
 utils::data(rawDrugNamesCoOcEpSO, package="epos")
 utils::data(rawDrugNamesCoOcESSO, package="epos")
 utils::data(rawDrugNamesCoOcEPILONT, package="epos")
+utils::data(rawDrugNamesCoOcEPISEM, package="epos")
 atchashda <-
   readAtcMapIntoHashMapDrugNamesAtcCodes(
     system.file("extdata", "db-atc.map", package = "epos"), "\t")
-tepso <- genDictListFromRawFreq(rawDrugNamesCoOcEpSO[1:150])
+atchashaa <-
+  readAtcMapIntoHashMapAtcCodesAtcNames(
+    system.file("extdata", "db-atc.map", package = "epos"), "\t")
+atchashsec <-
+  readSecondLevelATC(
+    system.file("extdata", "atc-secondlevel.map", package = "epos"), "\t")
+tepso <- rawDrugNamesCoOcEpSO
+tesso <- rawDrugNamesCoOcESSO
+tepi <- rawDrugNamesCoOcEPILONT
+tepisem <- rawDrugNamesCoOcEPISEM
+tfenics <- rawDrugNamesCoOcFENICS
+
 neuroepso <- filterNeuroDrugs(tepso, atchashda)
-utils::data(rawDrugNamesCoOcESSO, package="epos")
-tesso <- genDictListFromRawFreq(rawDrugNamesCoOcESSO[1:150])
 neuroesso <- filterNeuroDrugs(tesso, atchashda)
-utils::data(rawDrugNamesCoOcEPILONT, package="epos")
-tepi <- genDictListFromRawFreq(rawDrugNamesCoOcEPILONT[1:150])
 neuroepi <- filterNeuroDrugs(tepi, atchashda)
+neuroepisem <- filterNeuroDrugs(tepisem, atchashda)
+neurofenics <- filterNeuroDrugs(tfenics, atchashda)
+
 dneuro <-
-  data.frame(EpSO = neuroepso[1:9],
-             ESSO = neuroesso[1:9],
-             EPILONT = neuroepi[1:9])
-dneuromaxk <- TopKLists::calculate.maxK(dneuro, 3, 5, 10)
+  data.frame(EpSO = neuroepso[1:210],
+             ESSO = neuroesso[1:210],
+             EPILONT = neuroepi[1:210],
+             EPISEM = neuroepisem[1:210],
+             FENICS = neurofenics[1:210])
+dneuromaxk <- TopKLists::calculate.maxK(dneuro, 5, 5, 5)
 tanimotobaseline <- createTanimotoBaseline(neuroepso, neuroesso, neuroepi, dneuromaxk)
 }
